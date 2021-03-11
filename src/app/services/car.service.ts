@@ -7,7 +7,7 @@ import { CarResponseModel } from '../models/carResponseModel';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl="https://localhost:44384/api/Cars/getall";
+  apiUrl="https://localhost:44384/api/Cars/getcardetails";
   constructor(private httpClient:HttpClient) { }
 
   getCars():Observable<CarResponseModel> {

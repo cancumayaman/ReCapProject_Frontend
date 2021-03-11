@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
+import { CarDetailDto } from 'src/app/models/carDetailDto';
 
 import { CarResponseModel } from 'src/app/models/carResponseModel';
 import { CarService } from 'src/app/services/car.service';
@@ -11,7 +11,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
 
-  cars:Car[]=[];
+  cars:CarDetailDto[]=[];
   dataLoaded=false;
 
   constructor(private carService:CarService) { }

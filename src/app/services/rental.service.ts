@@ -7,7 +7,7 @@ import { RentalResponseModel } from '../models/rentalResponseModel';
   providedIn: 'root'
 })
 export class RentalService {
-  apiUrl="https://localhost:44384/api/Rentals/getall";
+  apiUrl="https://localhost:44384/api/Rentals/getrentaldto";
   constructor(private httpClient:HttpClient) { }
 
   getRentals():Observable<RentalResponseModel>{
