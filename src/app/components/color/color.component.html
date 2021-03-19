@@ -1,16 +1,12 @@
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let color of colors">
-            <td>{{color.id}}</td>
-            <td>{{color.name}}</td>
-            
-        </tr>
-    </tbody>
-  </table>
+
+<ul class="list-group">
+    <li routerLink="/cars" [class]="getAllCars()" class="list-group-item active" aria-current="true">
+        All Colors
+    </li>
+    <li  (click)="setCurrentColor(color)"
+     routerLink="/cars/getcardetailsbycolor/{{color.id}}"
+      *ngFor="let color of colors" [class]="getCurrentColorClass(color)" class="list-group-item" aria-current="true">
+        {{color.name}}
+    </li>
+  
+  </ul>
