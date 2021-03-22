@@ -1,6 +1,42 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
+  <div class="mb-3 row">
+    <div class="col-md-8">
+      <label for="filterText" class="form-label">Search Car</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search">
+    </div>
+    
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+You searched {{filterText}}
+  </div>
+  <div class="row mb-4">
+      <div class="col-md-4">
+        <select  [(ngModel)]="brandFilter" class="form-select" aria-label="Default select example" >
+          <option>Select Brand</option>
+            <option *ngFor="let brand of brands"  [value]="brand.id"  >{{brand.name}}</option>
+            
+          </select>
+      </div>
+     
+      <div class="col-md-4">
+        <select  [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+            <option selected>Select Color</option>
+            <option  *ngFor="let color of colors"  [value]="color.id" >{{color.name}}</option>
+            
+          </select>
+      </div>
+      <div class="col-md-4">
+          <button routerLink="/cars/getbybrandandcolor/{{brandFilter}}/{{colorFilter}}" class="btn btn-warning " style="margin-right: 10px;">Filter</button>
+          <button routerLink="/cars" class="btn btn-danger">Clear</button>
+      </div>
+     
+      
+   
+  </div>
+ 
+  
 <table class="table table-striped table-primary">
     <thead>
         <tr>
@@ -16,9 +52,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars">
+        <tr *ngFor="let car of cars | filterPipe:filterText">
            
-            <td>{{car.carName}}</td>
+            <td>{{car.carName | uppercase}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
             <td>{{car.dailyPrice}}</td>

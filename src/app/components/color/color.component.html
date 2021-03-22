@@ -1,12 +1,20 @@
-
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search Car</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+You searched {{filterText}}
+</div>
 <ul class="list-group">
     <li routerLink="/cars" [class]="getAllCars()" class="list-group-item active" aria-current="true">
         All Colors
     </li>
     <li  (click)="setCurrentColor(color)"
      routerLink="/cars/getcardetailsbycolor/{{color.id}}"
-      *ngFor="let color of colors" [class]="getCurrentColorClass(color)" class="list-group-item" aria-current="true">
+      *ngFor="let color of colors | filterColor:filterText"  [class]="getCurrentColorClass(color)" class="list-group-item" aria-current="true">
         {{color.name}}
+        
     </li>
+    
   
   </ul>

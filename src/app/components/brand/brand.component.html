@@ -1,9 +1,15 @@
-
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search Car</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+You searched {{filterText}}
+</div>
 <ul class="list-group">
-  <li  [class]="getAllCars()" routerLink="/cars">All Cars</li>
+  <li  [class]="getAllCars()" routerLink="/cars" id="firstli">All Cars</li>
     <li (click)="setCurrentBrand(brand)"
     routerLink="/cars/getcardetailsbybrand/{{brand.id}}"
-    *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)" aria-current="true">
+    *ngFor="let brand of brands | filterBrand:filterText" [class]="getCurrentBrandClass(brand)" aria-current="true">
         {{brand.name}}
     </li>
   
