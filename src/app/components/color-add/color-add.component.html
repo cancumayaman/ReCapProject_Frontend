@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <form [formGroup]="colorAddForm">
+<h5 class="title">Add Color</h5>
+<div class="form-group mb-3">
+    <label for="name">Color Name</label>
+    <input type="text" id="name" class="form-control" formControlName="name" placeholder="Color Name" />
+</div>
+<div class="mb-3">
+    <button class="btn btn-danger" (click)="add()">Add</button>
+</div>
+            </form>
+        </div>
+    </div>
+</div>

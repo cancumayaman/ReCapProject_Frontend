@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <form [formGroup]="brandAddForm">
+<h5>Add Brand</h5>
+<div class="form-group mb-3">
+    <label>Brand Name</label>
+    <input type="text" class="form-control" formControlName="name" id="name" placeholder="Brand Name" />
+</div>
+<div class="mb-3">
+    <button class="btn btn-danger" (click)="add()">Add</button>
+</div>
+
+            </form>
+        </div>
+    </div>
+</div>

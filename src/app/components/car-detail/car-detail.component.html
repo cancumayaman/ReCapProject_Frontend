@@ -8,6 +8,7 @@
             <th>Brand Name</th>
             <th>Color Name</th>
             <th>Daily Price</th>
+            <th>Description</th>
             <th></th>
         </tr>
     </thead>
@@ -17,6 +18,7 @@
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.dailyPrice}}</td>
+        <td>{{car.description}}</td>
         <td><button class="btn btn-success" routerLink="/cars/rental/{{car.id}}">Rent This Car</button></td>
     </tr>
     </tbody>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Color } from 'src/app/models/color';
@@ -27,7 +28,7 @@ export class CarComponent implements OnInit {
   colorFilter: number;
   messaage:string="";
  
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private brandService:BrandService,private colorService:ColorService) { }
+  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private brandService:BrandService,private colorService:ColorService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -59,6 +60,7 @@ getCars(){
 this.carService.getCars().subscribe(response=>{
 this.cars=response.data;
 this.dataLoaded=true;
+this.toastrService.success("Cars Listed");
 
 });
 }

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+        
+    <form [formGroup]="carAddForm">
+        <h5>Add Car</h5>
+        <div class="form-group mb-3">
+            <label>Brand Id</label>
+            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Brand Id">
+        </div>
+        <div class="form-group mb-3">
+            <label>Color Id</label>
+            <input type="number" id="color" formControlName="colorId" class="form-control" placeholder="Color Id">
+        </div>
+        <div class="form-group mb-3">
+            <label>Car Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control" placeholder="Car Name">
+        </div>  
+        <div class="form-group mb-3">
+            <label>Model Year</label>
+            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Model Year">
+        </div>
+         <div class="form-group mb-3">
+            <label>Daily Price</label>
+            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Daily Price">
+        </div>
+        <div class="form-group mb-3">
+            <label>Description</label>
+            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-danger" (click)="add()">Add</button>
+        </div>
+
+     
+    </form>
+</div>
+</div>
+</div>
