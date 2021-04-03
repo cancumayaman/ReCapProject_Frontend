@@ -21,6 +21,7 @@ export class CarComponent implements OnInit {
   brands:Brand[]=[];
   colors:Color[]=[];
   currentBrand:number;
+  imageUrl="https://localhost:44384/";
   
   dataLoaded=false;
   filterText="";

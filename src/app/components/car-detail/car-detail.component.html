@@ -1,26 +1,32 @@
-<div *ngFor="let car of cars">
-<img src="{{ imageUrl }}{{ car.imagePath}}" alt="{{car.imagePath}}" style="width: 100%;height: 600px;">
-<table  class="table table-striped table-primary">
-    <thead>
-        <tr>
-           
-            <th>Car Name</th>
-            <th>Brand Name</th>
-            <th>Color Name</th>
-            <th>Daily Price</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>{{car.carName}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-        <td><button class="btn btn-success" routerLink="/cars/rental/{{car.id}}">Rent This Car</button></td>
-    </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div *ngFor="let car of cars">
+            <img src="{{ imageUrl }}{{ car.imagePath}}" alt="{{car.imagePath}}" style="width: 100%;height: 500px;">
+            <table  class="table table-striped table-primary">
+                <thead>
+                    <tr>
+                       
+                        <th>Car Name</th>
+                        <th>Brand Name</th>
+                        <th>Color Name</th>
+                        <th>Daily Price</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>{{car.carName}}</td>
+                    <td>{{car.brandName}}</td>
+                    <td>{{car.colorName}}</td>
+                    <td>{{car.dailyPrice}}</td>
+                    <td>{{car.description}}</td>
+                    <td><button class="btn btn-success" routerLink="/cars/rental/{{car.id}}">Rent This Car</button></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    <div class="col-md-2"></div>
 </div>

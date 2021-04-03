@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
@@ -27,7 +28,7 @@ export class RentCarComponent implements OnInit {
   rentable:Boolean = false;
   message:string="";
   imageUrl="https://localhost:44384/";
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private rentalService:RentalService, private router:Router,private customerService:CustomerService) { 
+  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private rentalService:RentalService, private router:Router,private customerService:CustomerService,private toastrService:ToastrService) { 
 
   }
 
@@ -53,10 +54,7 @@ export class RentCarComponent implements OnInit {
    
     });
     }
-    setCustomer(id:number){
-      this.customerId=id;
-
-    }
+    
    /*
     printDate() {
       console.log(this.startDate);
@@ -77,14 +75,28 @@ this.customerService.getCustomers().subscribe(response=>{
     
           this.rental={
             carId:this.cars[0].id,
-            customerId:this.customerId,
+            customerId:1,
             rentDate:this.startDate,
             returnDate:this.endDate
           }
      
       this.rentalService.addRental(this.rental).subscribe(response=>{
-      this.message="successfully rented";
-      console.log(this.message);
+        this.toastrService.success("You are redirected to the payment system","Successfull");
+setTimeout(() => 
+{
+  this.router.navigateByUrl('cars/payment');
+},
+2000);
+       
+      },responseError=>{
+        if(responseError.error.Errors.length>0){
+          for (let i = 0; i < responseError.error.Errors.length; i++) {
+            this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Validation Errors");
+            
+          }
+         
+        }
+       
       });
     }
 

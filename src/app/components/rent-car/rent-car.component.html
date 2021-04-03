@@ -32,18 +32,16 @@
           <table class="table table-striped table-primary">
               <thead>
                   <tr>
-                  <th>ID</th>
-                  <th>User ID</th>
+                 
                   <th>Company Name</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let customer of customers">
-                   <td>{{customer.id}}</td>
-                   <td>{{customer.userId}}</td>
+                    <td [(ngModel)]="customerId">{{customer.id}}</td>
                    <td>{{customer.companyName}}</td>
-                   <th><button class="btn btn-danger" (click)="setCustomer(customer.id)">Choose</button></th>
+                   
                   </tr>
               </tbody>
           </table>
