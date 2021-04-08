@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
+This is frontend of by backend recapproject. Web API was used for all dynamic operations. If you wanna use this project. Clone this project and enter this command for work in project. 
+#### npm install
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
