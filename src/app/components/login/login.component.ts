@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
-  constructor(private userService:UserService,private toastrService:ToastrService,private formBuilder:FormBuilder,private route:Router) { }
+  constructor(private userService:UserService,private toastrService:ToastrService,private formBuilder:FormBuilder,private route:Router,private localStoregeService:LocalStorageService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -28,10 +29,14 @@ login(){
     this.userService.loginUser(loginModel).subscribe(response=>{
 
       this.toastrService.info(response.message);
-      localStorage.setItem("token",response.data.token);
+      this.localStoregeService.setItem("email",this.loginForm.get("email")?.value);
+     this.localStoregeService.setItem("token",response.data.token);
+      
       setTimeout(()=>{
-this.route.navigateByUrl("cars");
-      },2000)
+window.location.href='';
+
+      },100)
+      
     },
     responseError=>{
       this.toastrService.error(responseError.error);
@@ -41,4 +46,5 @@ this.route.navigateByUrl("cars");
     this.toastrService.error("Please enter valid form");
   }
 }
+
 }

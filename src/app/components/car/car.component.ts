@@ -29,7 +29,9 @@ export class CarComponent implements OnInit {
   colorFilter: number;
   messaage:string="";
  
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private brandService:BrandService,private colorService:ColorService,private toastrService:ToastrService) { }
+  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private brandService:BrandService,private colorService:ColorService,private toastrService:ToastrService) { 
+    
+  }
 
   ngOnInit(): void {
 
@@ -58,12 +60,14 @@ if(params["brandId"]){
 
   }
 getCars(){
+  
 this.carService.getCars().subscribe(response=>{
 this.cars=response.data;
 this.dataLoaded=true;
 this.toastrService.success("Cars Listed");
 
 });
+
 }
 
 getCarsByBrandId(brandId:number){

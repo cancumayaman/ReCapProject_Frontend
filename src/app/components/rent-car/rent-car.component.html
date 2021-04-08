@@ -46,6 +46,8 @@
               </tbody>
           </table>
       </div>
+      <label>Identity Number For FindeksScore</label>
+      <input type="number" style="width: 100%;" class="mb-3"   [ngModel]="identityNumber"  (ngModelChange)="setIdentityNumber($event)"   name="identityNumber"><br>
         <label>Rent Start Date</label>
         <input type="date" style="width: 100%;" class="mb-3"   [ngModel]="startDate"  (ngModelChange)="setDate('start', $event)"  name="startDate"><br>
         <label>Rent End Date</label>

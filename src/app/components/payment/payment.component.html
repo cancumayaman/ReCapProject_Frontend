@@ -51,17 +51,48 @@
                                 </div>
                             </div>
                         </div>
+                       
                     </form>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <select   class="form-select mt-3 mb-3"  [(ngModel)]="selectedCard" (change)="setCurrentCard()" aria-label="Default select example">
+                                    <option selected>Select Card</option>
+                                    <option  *ngFor="let card of cards"   [ngValue]="card">{{card.cardOwner}}</option>
+                                    
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-xs-12">
                             <button class="btn btn-warning btn-lg btn-block" (click)="addPayment()">Process payment</button>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Save Credit Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Would you like to save your credit card for next shopping?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="saveCreditCard()">Save my credit card</button>
+        </div>
+      </div>
     </div>
   </div>
   

@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
+import { RentalComponent } from './components/rental/rental.component';
+import { UserInfoUpdateComponent } from './components/user-info-update/user-info-update.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -22,13 +24,15 @@ const routes: Routes = [
   {path:"cars/getcardetails/:carId",component:CarDetailComponent},
   {path:"cars/getbybrandandcolor/:brandId/:colorId",component:CarComponent},
   {path:"cars/rental/:carId",component:RentCarComponent},
+  {path:"cars/rentals",component:RentalComponent},
   {path:"cars/add",component:CarAddComponent,canActivate:[LoginGuard]},
   {path:"brands/add",component:BrandAddComponent,canActivate:[LoginGuard]},
   {path:"colors/add",component:ColorAddComponent,canActivate:[LoginGuard]},
   {path:"cars/update/:carId",component:CarUpdateComponent},
   {path:"cars/payment",component:PaymentComponent},
   {path:"register",component:RegisterComponent},
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"user/update",component:UserInfoUpdateComponent}
   
 ];
 

@@ -1,0 +1,33 @@
+<div class="container" style="margin-bottom: 200px;">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form [formGroup]="userUpdateForm">
+            <div class="form-group mb-3">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control"  [(ngModel)]="user.firstName" id="firstName" formControlName="firstName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control"  [(ngModel)]="user.lastName" id="lastName" formControlName="lastName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control"  [(ngModel)]="email" id="email" formControlName="email">
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="form-group mb-3">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword"  formControlName="confirmPassword" >
+            </div>
+            <button class="btn btn-primary" (click)="updateUser()">Update</button>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+

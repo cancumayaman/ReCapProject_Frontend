@@ -3,10 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { Customer } from 'src/app/models/customer';
+import { FindeksDto } from 'src/app/models/findeks';
 import { Rental } from 'src/app/models/rental';
 import { RentCar } from 'src/app/models/rentCar';
 import { CarService } from 'src/app/services/car.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { FindeksService } from 'src/app/services/findeks.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -18,6 +20,8 @@ export class RentCarComponent implements OnInit {
   cars:CarDetailDto[]=[];
   dataLoaded=false;
   customers:Customer[];
+  findeksDto:FindeksDto;
+  identityNumber:number;
   startDate:Date;
   endDate:Date;
   carid:number;
@@ -28,7 +32,7 @@ export class RentCarComponent implements OnInit {
   rentable:Boolean = false;
   message:string="";
   imageUrl="https://localhost:44384/";
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private rentalService:RentalService, private router:Router,private customerService:CustomerService,private toastrService:ToastrService) { 
+  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private rentalService:RentalService,private findeksService:FindeksService, private router:Router,private customerService:CustomerService,private toastrService:ToastrService) { 
 
   }
 
@@ -38,7 +42,7 @@ export class RentCarComponent implements OnInit {
       
       if(params["carId"]){
         this.getCarsByCarId(params["carId"]);
-        
+        this.carid=params["carId"];
        // this.printDate();
       }
      
@@ -65,6 +69,10 @@ export class RentCarComponent implements OnInit {
       date === "start" ? (this.startDate = e) : (this.endDate = e);
       //this.printDate();
     }
+    setIdentityNumber(e:any) {
+      this.identityNumber= e;
+      
+    }
     getCustomers(){
 this.customerService.getCustomers().subscribe(response=>{
   this.customers=response.data;
@@ -72,14 +80,14 @@ this.customerService.getCustomers().subscribe(response=>{
     }
     
     addRental(){
-    
-          this.rental={
-            carId:this.cars[0].id,
-            customerId:1,
-            rentDate:this.startDate,
-            returnDate:this.endDate
-          }
-     
+   
+    this.findeksService.calculateFindeks(this.identityNumber,this.carid).subscribe(response=>{
+      this.rental={
+        carId:this.cars[0].id,
+        customerId:1,
+        rentDate:this.startDate,
+        returnDate:this.endDate
+      }
       this.rentalService.addRental(this.rental).subscribe(response=>{
         this.toastrService.success("You are redirected to the payment system","Successfull");
 setTimeout(() => 
@@ -98,6 +106,13 @@ setTimeout(() =>
         }
        
       });
+    },
+   responseError=>{
+     this.toastrService.error(responseError.error.message);
+   }
+    )
+       
+  
     }
 
 }
