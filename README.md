@@ -1,3 +1,11 @@
+# ReCapProject Frontend
+This frontend project belongs to my car rental backend project.
+You can reach backend project in [here](https://www.github.com/cancumayaman/recapproject).
+
+This project has been utilized by object oriented angular.  The api written in the backend section is received by the services in the angular and sent to the relevant component as a result of the necessary operations.  
+
+A modular structure was created in the project, thus avoiding complexity.  We can communicate with user with reactive forms.
+
 # Recapproject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
